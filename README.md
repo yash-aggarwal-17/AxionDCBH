@@ -5,7 +5,7 @@ Jupyter project for Direct Collapse Black Holes via Axion decay. Useful physics 
 Variance2.0 holds the value for variance of cosmic density field as a function of mass, and any example files are simply to test out the code. 
 
 Packages needed to run the code:
-    1.) Python 3.12
+    1.) Python 3.12 <br />
     2.) SciPy
     3.) Numpy
     4.) Pandas
