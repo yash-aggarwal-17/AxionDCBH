@@ -18,7 +18,10 @@ e = 2.718281828
 """Define masses"""
 
 mp = 1.67262171e-24 # grams
-mp_eV = 938.272029e+6 # eV
+mp_eV = 938.272029e+6 # eV/c^2
+
+me = 9.109383632e-28 # grams
+me_eV = 510998.9461 # eV/c^2
 
 """Conversions"""
 
@@ -66,16 +69,21 @@ def T_IGM(z):
 def T_CMB(z):
     return 2.725*(1+z)
 
+"""Define halo properties"""
+
 def Tvir(z, mhalo):
 
     fac = (
-            1.98e+4 * (1.22/0.6) *
+            0.75*1.98e+4 * (1.22/0.6) *
             (Omega_m / Omega_t_m(z) * Delta_c / (18*pi**2) )**(1/3) *
             (mhalo/ 10**8)**(2/3) *
             (1+z)/10 * h**(2/3)
           )
     return fac
 
+def Rvir(z, mhalo): 
+    val = 323 * (mhalo/(1e+6))**(1/3) * ((1+z)/10)**(-1)
+    return val
 
 """Define cosmological density parameters at time t"""
 
