@@ -29,6 +29,7 @@ pc_to_cm = 3.0856776e+18 # cm
 msol_to_grams = 1.9891e+33 # grams
 eV_to_ergs = 1.60217653e-12 # ergs
 GeV_To_InvSec = 1.52e+24 # sec
+yrs_to_sec = 3.154e+7 
 
 """Cosmology""" 
 
@@ -142,4 +143,12 @@ def sigma_Hm(en):
     result[mask] = val*(en[mask] - 0.755)**1.5 / en[mask]**3
     
     return result
+
+""" Define cooling rates """
+
+def lambda_H2(xH2, nH, T): 
+    """
+    return H2 cooling rate: ergs cm^(-3) s^(-1)
+    """
+    return 3.41e-35 * T**(3.4) * xH2 * nH**2
 
