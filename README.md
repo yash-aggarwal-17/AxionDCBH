@@ -10,5 +10,6 @@ Packages needed to run the code: <br />
     3.) Numpy 2.1 <br />
     4.) Pandas 2.2 <br />
     5.) Matplotlib 3.9 <br />
+    6.) h5py 3.12 <br />
 
 The example.ipynb and physics/definitions.ipynb are just there to test out pieces of code. 
