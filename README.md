@@ -12,4 +12,4 @@ Packages needed to run the code: <br />
     5.) Matplotlib 3.9 <br />
     6.) h5py 3.12 <br />
 
-The example.ipynb and physics/definitions.ipynb are just there to test out pieces of code. 
+The example.ipynb and physics/definitions.ipynb are just there to test out pieces of code. 'plots' directory contains all the necessary plots, and 'solutions' directory contains the solutions to the parameter space scans. These computations are extemely expensive so it is better to save them in a file and recall from there. 
