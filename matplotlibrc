@@ -1,0 +1,40 @@
+
+
+text.usetex : True
+# font.family : STIXGeneral
+font.family : serif
+font.serif  : Palatino
+# mathtext.fontset : stix
+
+axes.titlepad : 15
+axes.titlesize : 20
+axes.labelsize : 16
+axes.linewidth : 1.5
+axes.formatter.min_exponent : 2
+
+xtick.top : True
+xtick.bottom : True
+xtick.major.size : 8
+xtick.major.width : 1.5
+xtick.major.pad : 8
+xtick.minor.size : 3
+xtick.minor.width : 1
+xtick.labelsize : 16
+xtick.direction : in
+
+ytick.left : True
+ytick.right : True
+ytick.major.size : 8
+ytick.major.width : 1.5
+ytick.minor.size : 3
+ytick.minor.width : 1
+ytick.labelsize : 16
+ytick.direction : in
+
+lines.linewidth : 1.7
+
+legend.fontsize : 14
+legend.borderaxespad : 0.5
+legend.title_fontsize : 16
+
+savefig.bbox : tight
