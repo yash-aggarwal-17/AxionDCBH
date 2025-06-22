@@ -152,3 +152,63 @@ def lambda_H2(xH2, nH, T):
     """
     return 3.41e-35 * T**(3.4) * xH2 * nH**2
 
+## Define cooling rate according to Galli and Palla 1998
+"""
+This H2 cooling definition works in both low and LTE regimes. 
+See examples.ipynb for a worked example and derivation. 
+"""
+
+def lambda_H2_cool (xH2, nH, T): 
+
+    """
+    Returns H2 cooling rate in units: ergs cm^-3 s^-1. 
+
+    The function, however, is constructed first to calculate the cooling rate
+    per H2 molecule. 
+
+    First we define low density and LTE cooling rates and then bridge them together. 
+    """
+
+    # Define low density H cooling rate 
+    def lambda_low_n(n,T):
+        """ 
+        Returns cooling rate per H2 molecule in low density regime. Depends on H number density.
+        units: ergs s^(-1)
+        """
+        
+        x=np.log10(T)
+        val = 10**( - 103.0 + 97.59*x - 48.05*(x)**2 + 10.80 * (x)**3 - 0.9032*(x)**4 )
+        return val * n 
+
+    # Define LTE cooling rate
+    def lambda_LTE(T): 
+
+        """ 
+        At LTE values, the cooling rate is independent of H number density 
+        units: ergs s^(-1)
+        """
+        x = T/1e+3 
+        # Rotational cooling term 
+        lambda_rot_1 = ( (9.5e-22 * x**(3.76) ) / (1 + 0.12 * x**(2.1) ) *
+                       np.exp(- (0.13/x)**3 ) 
+                       )
+        lambda_rot_2 = 3e-24*np.exp(-0.51 / x)
+
+        # Vibrational Cooling Term 
+        lambda_vib_1 = 6.7e-19*np.exp( - 5.86/x)
+        lambda_vib_2 = 1.6e-18*np.exp( - 11.7/x)
+    
+        return (lambda_rot_1 + lambda_rot_2 + lambda_vib_1 + lambda_vib_2)
+
+    # Bridge the two cooling rates together in ergs s^(-1)  
+    lambda_H2_total = lambda_low_n (nH,T)*lambda_LTE(T)/(lambda_low_n (nH,T) + lambda_LTE(T))
+
+    # Return total H2 cooling rate multiplied by H2 number density
+    return lambda_H2_total * nH * xH2
+
+
+# Define H cooling rate according to Cen 1992 
+
+def lambda_H_cool(xe, nH, T): 
+    val = 7.5e-19*(1 + (T/1e+5)**(1/2))**(-1) * np.exp(-118348/T)
+    return val * xe * nH**2
