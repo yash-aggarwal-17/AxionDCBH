@@ -8,7 +8,7 @@ Packages needed to run the code: <br />
     3.) Numpy 2.0 <br />
     4.) Pandas 2.2 <br />
     5.) Matplotlib 3.9 <br />
-    6.) h5py 3.12 <br /> (In case one does not want to run an hour long computation) 
+    6.) h5py 3.12 <br />
     7.) Joblib 1.5 <br />
     8.) Tqdm 4.67 <br />
     9.) We will also need to install HaloMod for a statistical analysis of halos. The library can be found at: https://github.com/halomod/halomod  <br />
